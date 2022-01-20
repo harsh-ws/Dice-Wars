@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int leftdice = 1;
+  int rightdice = 2;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,21 +22,29 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.purple[200],
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Center(child: Text('DICE WAR')),
+          title: const Center(child: Text('DICE WAR')),
         ),
         body: SafeArea(
           child: Center(
             child: Row(
               children: <Widget>[
                 Expanded(
-                    child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Image.asset('images/dice1.png'),
+                    child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      leftdice = Random().nextInt(6) + 1;
+                    });
+                  },
+                  child: Image.asset('images/dice$leftdice.png'),
                 )),
                 Expanded(
-                    child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Image.asset('images/dice2.png'),
+                    child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      rightdice = Random().nextInt(6) + 1;
+                    });
+                  },
+                  child: Image.asset('images/dice$rightdice.png'),
                 )),
               ],
             ),
