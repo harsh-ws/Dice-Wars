@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart'
+A simple game developed in Flutter to settle differences with the roll of a dice.
 
-void main(){
-runApp(MyApp());
-}
-
-s
+<img src = "images/dicewars.png" height = 400>
